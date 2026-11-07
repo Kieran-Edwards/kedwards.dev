@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+    <defs>
+        <style>
+            .cls-1 {
+                fill: black;
+                @media (prefers-color-scheme: dark) {
+                    fill: white;
+                }
+            }
+        </style>
+    </defs>
+
+    <g>
+        <path
+            d="M122.083 10.113h43.448v428.089h-43.448ZM239.93 10.113h42.853l-64.131 213.821 64.131 214.268H239.93l-64.28-214.268ZM303.615 10.113h86.302V52.52h-42.853v149.095h42.853v43.151h-42.853v150.285h42.853v43.151h-86.302ZM122.083 459.48h267.388v42.407H122.083Z"
+            class="cls-1" />
+    </g>
+</svg>
