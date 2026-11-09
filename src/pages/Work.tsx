@@ -29,13 +29,19 @@ export function Work() {
     setFadeKey((k) => k + 1);
   };
 
-  const toggleMobileProject = (name: string) => {
+  const toggleMobileProject = (name: string, button: HTMLButtonElement) => {
     if (name === activeProject) {
       setActiveProject("");
       return;
     }
     setActiveProject(name);
     setFadeKey((k) => k + 1);
+    requestAnimationFrame(() => {
+      button.closest<HTMLElement>("[data-accordion-item]")?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    });
   };
 
   useEffect(() => {
@@ -139,11 +145,12 @@ export function Work() {
           return (
             <div
               key={project.name}
-              className="card-surface overflow-hidden"
+              data-accordion-item
+              className="card-surface overflow-hidden scroll-mt-20"
             >
               <button
                 type="button"
-                onClick={() => toggleMobileProject(project.name)}
+                onClick={(e) => toggleMobileProject(project.name, e.currentTarget)}
                 aria-expanded={isOpen}
                 aria-label={project.name}
                 className="w-full flex items-center justify-between gap-3 px-4 py-4 cursor-pointer"
