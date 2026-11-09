@@ -1,0 +1,77 @@
+@theme {
+  --color-surface: theme(colors.slate.50);
+  --color-surface-alt: theme(colors.slate.100);
+  --color-surface-raised: theme(colors.white);
+  --color-border: theme(colors.slate.200);
+  --color-border-subtle: theme(colors.slate.100);
+  --color-text: theme(colors.slate.900);
+  --color-text-muted: theme(colors.slate.600);
+  --color-text-subtle: theme(colors.slate.500);
+  --color-accent: theme(colors.teal.800);
+  --color-text-on-accent: theme(colors.slate.100);
+}
+
+:root.dark {
+  --color-surface: theme(colors.neutral.900);
+  --color-surface-alt: theme(colors.neutral.900);
+  --color-surface-raised: theme(colors.neutral.800);
+  --color-border: theme(colors.neutral.700);
+  --color-border-subtle: theme(colors.neutral.700);
+  --color-text: theme(colors.neutral.100);
+  --color-text-muted: theme(colors.neutral.300);
+  --color-text-subtle: theme(colors.neutral.400);
+  --color-accent: theme(colors.teal.700);
+  --color-text-on-accent: theme(colors.slate.100);
+}
+
+@layer base {
+  html {
+    @apply transition-colors duration-300;
+  }
+}
+
+@layer components {
+  .page-section {
+    @apply flex flex-col items-center justify-center px-4 scroll-mt-16 transition-colors;
+    background-color: var(--color-surface);
+    color: var(--color-text);
+  }
+
+  .card-surface {
+    @apply rounded-xl border transition-colors;
+    background-color: var(--color-surface-raised);
+    border-color: var(--color-border);
+  }
+
+  .card-interactive {
+    @apply rounded-xl border text-sm font-medium transition-all;
+    background-color: var(--color-surface-raised);
+    border-color: var(--color-border);
+    color: var(--color-text-muted);
+  }
+
+  .card-interactive:hover {
+    @apply bg-slate-100 text-slate-900 dark:bg-neutral-700 dark:text-neutral-100;
+  }
+
+  .link-muted {
+    @apply underline cursor-pointer transition-colors;
+    color: var(--color-text-subtle);
+  }
+
+  .link-muted:hover {
+    color: var(--color-text);
+  }
+
+  .text-muted {
+    color: var(--color-text-muted);
+  }
+
+  .text-subtle {
+    color: var(--color-text-subtle);
+  }
+
+  .border-default {
+    border-color: var(--color-border);
+  }
+}
