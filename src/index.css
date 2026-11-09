@@ -3,6 +3,14 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+html,
+body,
+#root {
+  min-height: 100%;
+  background-color: var(--color-surface);
+  color: var(--color-text);
+}
+
 @keyframes projectFade {
   from {
     opacity: 0;

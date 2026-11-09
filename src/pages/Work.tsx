@@ -34,14 +34,34 @@ export function Work() {
       setActiveProject("");
       return;
     }
+    const item = button.closest<HTMLElement>("[data-accordion-item]");
+    const panel = item?.querySelector<HTMLElement>("[data-accordion-panel]");
     setActiveProject(name);
     setFadeKey((k) => k + 1);
-    requestAnimationFrame(() => {
-      button.closest<HTMLElement>("[data-accordion-item]")?.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    });
+    if (!item) return;
+
+    const scroll = () => {
+      item.scrollIntoView({ behavior: "smooth", block: "start" });
+    };
+
+    if (panel) {
+      let done = false;
+      const finish = () => {
+        if (done) return;
+        done = true;
+        panel.removeEventListener("transitionend", onEnd);
+        scroll();
+      };
+      const onEnd = (event: TransitionEvent) => {
+        if (event.target === panel && event.propertyName === "grid-template-rows") {
+          finish();
+        }
+      };
+      panel.addEventListener("transitionend", onEnd);
+      window.setTimeout(finish, 350);
+    } else {
+      requestAnimationFrame(scroll);
+    }
   };
 
   useEffect(() => {
@@ -166,6 +186,7 @@ export function Work() {
                 />
               </button>
               <div
+                data-accordion-panel
                 className={`grid transition-[grid-template-rows] duration-300 ease-in-out ${
                   isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
                 }`}

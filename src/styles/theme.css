@@ -11,7 +11,12 @@
   --color-text-on-accent: theme(colors.slate.100);
 }
 
+:root {
+  color-scheme: light;
+}
+
 :root.dark {
+  color-scheme: dark;
   --color-surface: theme(colors.neutral.900);
   --color-surface-alt: theme(colors.neutral.900);
   --color-surface-raised: theme(colors.neutral.800);
